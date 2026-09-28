@@ -46,10 +46,12 @@
   .notif-btn { background: transparent; border: 1px solid var(--goldDim); color: var(--gold); border-radius: 8px; padding: 5px 10px; font-size: 12px; cursor: pointer; }
   .pressure-banner { background: rgba(217,122,108,0.12); border: 1px solid rgba(217,122,108,0.5); border-radius: 10px; padding: 10px 14px; color: var(--ink); font-size: 12.5px; line-height: 1.5; display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
   .pressure-banner button { background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 13px; flex-shrink: 0; }
-  .due-row { margin-top: 10px; padding-right: 30px; display: flex; align-items: center; gap: 6px; }
+  /* item 3: due-time prompt reads as its own sub-section, separated from the
+     task content / links above it, instead of running straight on. */
+  .due-row { margin-top: 10px; padding-top: 10px; padding-right: 30px; border-top: 1px solid rgba(184,134,63,0.22); display: flex; align-items: center; gap: 6px; }
   .due-input { background: var(--panelLight); border: 1px solid var(--panel); border-radius: 6px; padding: 4px 8px; color: var(--ink); font-size: 12.5px; }
   .due-save { background: var(--teal); border: none; border-radius: 6px; padding: 4px 10px; color: var(--bg); font-weight: 700; font-size: 11.5px; cursor: pointer; }
-  .due-set { margin-top: 8px; padding-right: 30px; color: var(--gold); font-size: 12px; }
+  .due-set { margin-top: 8px; padding-top: 8px; padding-right: 30px; border-top: 1px solid rgba(184,134,63,0.22); color: var(--gold); font-size: 12px; }
   .tip-banner { background: rgba(184,134,63,0.08); border: 1px solid rgba(184,134,63,0.3); border-radius: 10px; padding: 10px 14px; color: var(--ink); font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; }
   .tip-banner b { color: var(--gold); }
   .task-card.done { cursor: pointer; }
@@ -118,6 +120,9 @@
   .bottleneck-card.bottleneck-block .bottleneck-label { color: var(--red); }
   .why-compact { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); cursor: pointer; }
   .why-compact-full { background: var(--surfaceElevated); border: 1px solid rgba(95,168,160,0.27); border-radius: 10px; padding: 10px 14px; color: var(--ink); font-size: 12.5px; line-height: 1.5; margin-top: 6px; }
+  .identity-strip { font-size: 13px; color: var(--muted); line-height: 1.45; margin: 2px 0 10px; }
+  .identity-strip b { color: var(--ink); }
+  .home-greeting { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
   .why-compact-visible { display: flex; align-items: flex-start; gap: 6px; font-size: 12.5px; color: var(--muted); background: rgba(95,168,160,0.06); border-radius: 10px; padding: 8px 12px; line-height: 1.5; }
   .why-compact-visible .why-text { color: var(--ink); }
   .now-title { font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: 0.2px; margin-top: 2px; }
@@ -156,6 +161,32 @@
   .quick-choice-row { display: flex; flex-wrap: wrap; gap: 6px; }
   .quick-choice-btn { background: var(--panel); border: 1px solid var(--panelLight); border-radius: 20px; padding: 7px 12px; color: var(--ink); font-size: 12.5px; cursor: pointer; }
   .quick-choice-free { font-size: 11px; color: var(--muted); opacity: 0.8; }
+  /* ---- Phase B (v1.4.0): structured onboarding wizard ---- */
+  .ob-wrap { display: flex; flex-direction: column; gap: 14px; padding: 4px 16px 24px; }
+  .ob-progress-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .ob-progress-label { font-size: 12px; color: var(--muted); }
+  .ob-progress-track { flex: 1; height: 4px; border-radius: 4px; background: var(--panelLight); overflow: hidden; }
+  .ob-progress-fill { height: 100%; background: var(--teal); border-radius: 4px; transition: width .2s ease; }
+  .ob-title { font-family: 'Frank Ruhl Libre', serif; font-size: 19px; font-weight: 700; color: var(--ink); }
+  .ob-rationale { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .ob-field { display: flex; flex-direction: column; gap: 6px; }
+  .ob-field label { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+  .ob-field input[type="text"], .ob-field input[type="number"], .ob-field textarea {
+    background: var(--surfaceElevated); border: 1px solid var(--panelLight); border-radius: 10px; padding: 10px 12px;
+    color: var(--ink); font-size: 14px; font-family: inherit; min-height: 40px;
+  }
+  .ob-field textarea { min-height: 60px; resize: vertical; }
+  .ob-chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ob-chip-btn { background: var(--panel); border: 1px solid var(--panelLight); border-radius: 20px; padding: 8px 13px; color: var(--ink); font-size: 12.5px; cursor: pointer; min-height: 40px; }
+  .ob-chip-btn.selected { background: var(--teal); border-color: var(--teal); color: #06231f; font-weight: 700; }
+  .ob-skip-note { font-size: 11px; color: var(--muted); opacity: 0.85; }
+  .ob-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .ob-actions .primary-btn { background: var(--teal); color: #06231f; border: none; border-radius: 10px; padding: 11px 18px; font-weight: 700; font-size: 14px; cursor: pointer; min-height: 44px; }
+  .ob-actions .ghost-btn-ob { background: transparent; border: 1px solid var(--panelLight); color: var(--ink); border-radius: 10px; padding: 11px 16px; font-size: 13.5px; cursor: pointer; min-height: 44px; }
+  .ob-actions .text-btn-ob { background: transparent; border: none; color: var(--muted); font-size: 12.5px; cursor: pointer; padding: 8px 4px; text-decoration: underline; }
+  .ob-finish-note { font-size: 12px; color: var(--muted); background: rgba(95,168,160,0.08); border-radius: 10px; padding: 8px 12px; }
+  .ob-generating { font-size: 13px; color: var(--muted); text-align: center; padding: 20px 0; }
+  .ob-gen-error { font-size: 13px; color: var(--red); text-align: center; padding: 10px 0; }
   .onboarding-topbar { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px 0; }
   .back-btn { background: transparent; border: none; color: var(--muted); font-size: 12.5px; cursor: pointer; padding: 4px 0; }
   .onboarding-dots { display: flex; gap: 5px; }
@@ -206,7 +237,7 @@
   .task-reopen-btn { margin-top: 10px; margin-right: 30px; background: transparent; border: 1px solid var(--muted); border-radius: 8px; padding: 6px 12px; color: var(--ink); font-weight: 600; font-size: 12.5px; cursor: pointer; }
   .task-steps { margin-top: 10px; padding-right: 30px; display: flex; flex-direction: column; gap: 5px; }
   .task-step { color: var(--ink); opacity: 0.85; font-size: 13.5px; line-height: 1.6; }
-  .task-links { margin-top: 8px; padding-right: 30px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .task-links { margin-top: 10px; padding-top: 10px; padding-right: 30px; border-top: 1px solid rgba(184,134,63,0.22); display: flex; flex-wrap: wrap; gap: 6px; }
   .task-link { background: var(--panelLight); color: var(--teal); font-size: 11.5px; border-radius: 6px; padding: 3px 8px; text-decoration: none; }
 
   .replan-panel { background: rgba(227,168,87,0.055); border: 1px solid rgba(184,134,63,0.27); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
@@ -260,6 +291,10 @@
   button.x-btn:hover { color: var(--ink); background: rgba(255,255,255,0.05); }
   button.x-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; color: var(--ink); }
   button.x-btn.x-inline { position: static; flex-shrink: 0; }
+  /* item 5: dismissing a suggestion is not the same action as deleting real data -
+     give it a visibly lighter weight than the destructive "x-btn" delete style. */
+  button.x-btn.x-dismiss { font-size: 15px; width: 28px; height: 28px; min-width: 28px; opacity: 0.6; }
+  button.x-btn.x-dismiss:hover { opacity: 0.9; }
   /* ---- v1.2.0: shared back button (non-home screens, sub-views, overlays) ---- */
   .nav-back-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; min-width: 40px; padding: 0 12px;
     background: transparent; border: 1px solid var(--panelLight); border-radius: 10px; color: var(--ink); font-size: 13px;
@@ -374,6 +409,7 @@
   .kpi-actual { font-size: 20px; font-weight: 800; color: var(--ink); font-family: 'Frank Ruhl Libre', serif; }
   .kpi-sep { font-size: 13px; color: var(--muted2); }
   .kpi-pct { margin-inline-start: auto; font-size: 13px; font-weight: 700; color: var(--gold); }
+  .confidence-note { font-size: 11.5px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
   .kpi-suggest { display: flex; align-items: center; gap: 8px; background: rgba(95,168,160,0.08); border: 1px dashed rgba(95,168,160,0.5); border-radius: 10px; padding: 8px 10px; }
   .kpi-suggest-main { flex: 1; min-width: 0; }
   .kpi-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -457,7 +493,7 @@ window.addEventListener("error", function (ev) {
   // Bump together with sw.js's APP_VERSION on every deploy. The actual update
   // DETECTION is driven by the Service Worker lifecycle (registerServiceWorker
   // below) - this constant is for debugging / a future "what's new" surface.
-  var APP_VERSION = "1.3.0";
+  var APP_VERSION = "1.4.0";
   var swRegistration = null;
   var swWaitingWorker = null;
 
@@ -714,7 +750,11 @@ window.addEventListener("error", function (ev) {
       '"next_action":{"title":"כותרת משימה קונקרטית","steps":["צעד 1 (15-30 דק\')","צעד 2"]}}\n' +
       'ה-"decision" בתוך recommendation חייב להיות אך ורק אחד מהערכים: proceed, wait, test, reject, reconsider - לא טקסט חופשי.\n' +
       'אם באמת אין פעולה מיידית מתבקשת, next_action יכול להיות null. confidence הוא מספר בין 0 ל-1.\n' +
-      'יש לך גישה לחיפוש אינטרנט - השתמש בו אם זה עוזר לנתח נכון.';
+      'יש לך גישה לחיפוש אינטרנט - השתמש בו אם זה עוזר לנתח נכון.' +
+      // item 9: buildAPEXContext() already appends aiLanguageLine() mid-prompt, but
+      // repeating it as the very last instruction (closest to the model's output)
+      // makes English-language compliance far more reliable for this JSON-output call.
+      aiLanguageLine();
   }
 
   function dailyBriefRules(venture, tasks, decisions, today) {
@@ -812,7 +852,19 @@ window.addEventListener("error", function (ev) {
     var ms = parseInt(m[1], 10);
     return (ms > 1500000000000 && ms < Date.now() + DAY_MS) ? new Date(ms).toISOString() : null;
   }
-  function fmtN(key, n) { return t(key).replace("{n}", n); }
+  // item 8: Hebrew count templates need a distinct singular form ("1 X" is not
+  // grammatical). If a "<key>_one" translation exists and n === 1, use it as-is
+  // (already fully worded, no {n} substitution needed); otherwise fall back to
+  // the normal {n}-substituted template.
+  function fmtN(key, n) {
+    if (n === 1) {
+      var oneKey = key + "_one";
+      var dict = TRANSLATIONS[state.language] || TRANSLATIONS.he;
+      if (oneKey in dict) return dict[oneKey];
+      if (oneKey in TRANSLATIONS.he) return TRANSLATIONS.he[oneKey];
+    }
+    return t(key).replace("{n}", n);
+  }
   // Localized human duration ("3 ימים" / "3 days"), coarse on purpose.
   function formatDuration(ms) {
     if (isNaN(ms) || ms < 0) return "";
@@ -865,6 +917,18 @@ window.addEventListener("error", function (ev) {
     });
   }
 
+  // item 10: word-overlap ratio (0..1) between two texts, used to detect a
+  // near-duplicate AI reply. Order-insensitive, tolerant of small rewording.
+  function textSimilarity(a, b) {
+    var wa = String(a || "").toLowerCase().split(/\s+/).filter(Boolean);
+    var wb = String(b || "").toLowerCase().split(/\s+/).filter(Boolean);
+    if (!wa.length || !wb.length) return 0;
+    var counts = {};
+    wb.forEach(function (w) { counts[w] = (counts[w] || 0) + 1; });
+    var common = 0;
+    wa.forEach(function (w) { if (counts[w] > 0) { common++; counts[w]--; } });
+    return common / Math.max(wa.length, wb.length);
+  }
   function buildPrompt(rules, history) {
     var lines = history.filter(function (m) { return m && !m.error; }).map(function (m) { return (m.role === "user" ? "יזם: " : "APEX: ") + m.content; }).join("\n");
     return rules + "\n\n--- השיחה עד כה ---\n" + lines + "\n\nכתוב עכשיו את התגובה הבאה של APEX (רק את התגובה עצמה):";
@@ -909,6 +973,35 @@ window.addEventListener("error", function (ev) {
   function healthCatsFor(lc) { return isBusinessStage(lc) ? HEALTH_CATS_BUSINESS : HEALTH_CATS_STARTUP; }
   function lifecycleLabel(lc) { return t("lc_" + lc); }
   function entryStateLabel(es) { return ENTRY_STATE_LABELS[es] ? t(ENTRY_STATE_LABELS[es]) : "—"; }
+
+  // ---- Phase C: Home identity strip (v1.4.0) ----
+  // Answers "what am I building / what problem am I solving" in one short line,
+  // from data that already exists (WHY / current_goal / mission / bottleneck).
+  // Degrades to nothing (never "undefined") when old stored data lacks these
+  // fields - it never invents content.
+  function identityStripFocusText(v, bottleneckTitle) {
+    if (!v) return "";
+    if (v.current_goal && v.current_goal.title) return v.current_goal.title;
+    if (bottleneckTitle) return bottleneckTitle;
+    if (v.mission) return v.mission;
+    if (v.core_why) return v.core_why;
+    return "";
+  }
+  function identityStripHtml(v, bottleneckTitle) {
+    if (!v || !v.title) return "";
+    var focus = identityStripFocusText(v, bottleneckTitle);
+    if (!focus) return "";
+    var verb = isBizVenture() ? t("identity_verb_biz") : t("identity_verb_idea");
+    return '<div class="identity-strip">🎯 <b>' + esc(v.title) + '</b> — ' + esc(verb) + ' ' + esc(focus) + '</div>';
+  }
+  // Local (no-AI) partner-toned greeting line: name + this week's momentum, reusing
+  // data already computed elsewhere on Home (doneThisWeek) rather than a new call.
+  function homeGreetingHtml(v, doneThisWeekCount) {
+    if (!v) return "";
+    var prefix = v.founder_name ? (esc(v.founder_name) + ", ") : "";
+    var body = doneThisWeekCount > 0 ? esc(fmtN("home_greet_momentum", doneThisWeekCount)) : esc(t("home_greet_default"));
+    return '<div class="home-greeting">' + prefix + body + '</div>';
+  }
 
   function emptyBusinessProfile() {
     var bp = {};
@@ -1269,6 +1362,39 @@ window.addEventListener("error", function (ev) {
       quick_choice_prompt: "מה המצב שלך?",
       quick_idea: "💡 יש לי רעיון", quick_built: "🛠️ אני בונה משהו", quick_active: "🏪 יש לי עסק פעיל", quick_revenue: "💰 כבר יש הכנסות", quick_unsure: "🤷 אני לא בטוח",
       quick_free_text: "אפשר גם פשוט לכתוב לי.",
+      // ---- Phase B (v1.4.0): structured onboarding wizard ----
+      ob_step_label: "שלב {cur} מתוך {total}",
+      ob_skip_note: "אפשר לדלג על זה - זה לגמרי בסדר.",
+      ob_skip_step_btn: "דלג על השלב", ob_next_btn: "הבא →", ob_back_btn: "← חזרה",
+      ob_skip_all_btn: "דלג על השאר ותתחיל", ob_finish_btn: "✓ סיים ובנה את התוכנית",
+      ob_finish_note: "אפשר תמיד להוסיף ולדייק פרטים אחר כך במסך העסק.",
+      ob_generating: "APEX בונה את התוכנית שלך...",
+      ob_gen_error: "משהו השתבש בבניית התוכנית. אפשר לנסות שוב.",
+      ob_retry_btn: "נסה שוב",
+      ob_title_dna: "קצת עליך", ob_rationale_dna: "ככל שתספר יותר על עצמך, APEX תתאים את התוכנית ליכולות ולזמן שלך בפועל.",
+      ob_founder_name_label: "השם שלך (אופציונלי)", ob_founder_name_ph: "איך לקרוא לך?",
+      ob_capital_label: "כמה הון יש לך להשקיע?", ob_capital_none: "כמעט כלום", ob_capital_some: "קצת", ob_capital_enough: "מספיק",
+      ob_hours_label: "כמה שעות בשבוע תוכל להשקיע?", ob_hours_lt5: "עד 5", ob_hours_5_10: "5-10", ob_hours_10_20: "10-20", ob_hours_20plus: "20+",
+      ob_risk_label: "כמה סיכון אתה מוכן לקחת?", ob_risk_low: "נמוך", ob_risk_medium: "בינוני", ob_risk_high: "גבוה",
+      ob_title_venture: "המיזם / העסק", ob_rationale_venture: "שם ברור וסיבה אמיתית (ה-WHY) עוזרים ל-APEX לדבר אליך נכון בהמשך.",
+      ob_vname_label: "איך קוראים למיזם/לעסק?", ob_vname_ph: "לדוגמה: הסטודיו של דנה",
+      ob_why_label: "למה זה חשוב לך? (ה-WHY)", ob_why_ph: "המשפט שמזכיר לך למה בכלל התחלת",
+      ob_btype_label: "סוג העסק", ob_btype_product: "מוצר", ob_btype_service: "שירות", ob_btype_retail: "קמעונאות", ob_btype_food: "מזון", ob_btype_other: "אחר",
+      ob_years_label: "כמה זמן העסק פעיל?", ob_years_lt1: "פחות משנה", ob_years_1_3: "1-3 שנים", ob_years_3_10: "3-10 שנים", ob_years_10plus: "10+ שנים",
+      ob_vkind_label: "על מה מתמקדים עכשיו?",
+      ob_title_situation: "המצב הנוכחי", ob_rationale_situation: "ידיעה על מה שתקוע עוזרת ל-APEX לבנות תוכנית שפותרת את הדבר הנכון קודם.",
+      ob_bncat_label: "מה הכי מעכב אותך עכשיו?", ob_bncat_demand: "ביקוש/לקוחות", ob_bncat_pricing: "תמחור", ob_bncat_team: "צוות", ob_bncat_ops: "תפעול", ob_bncat_funding: "מימון", ob_bncat_other: "אחר",
+      ob_bndetail_label: "רוצה להרחיב? (אופציונלי)", ob_bndetail_ph: "כמה מילים על זה...",
+      ob_title_goal: "היעד וההצלחה", ob_rationale_goal: "יעד ברור ותאריך יעזרו ל-APEX לבנות תוכנית עם קצב אמיתי.",
+      ob_goal_label: "איך נראית הצלחה? (היעד הנוכחי)", ob_goal_ph: "לדוגמה: 10 לקוחות משלמים",
+      ob_fin_label: "יעד כספי (אופציונלי)", ob_fin_ph: "0",
+      ob_unit_label: "מטבע",
+      ob_horizon_label: "עד מתי?", ob_horizon_1m: "חודש", ob_horizon_3m: "3 חודשים", ob_horizon_6m: "חצי שנה", ob_horizon_1y: "שנה",
+      ob_title_deeper: "עוד קצת פרטים (רשות)", ob_rationale_deeper: "לגמרי אופציונלי - אבל כל פרט נוסף הופך את התוכנית למדויקת יותר.",
+      ob_offering_label: "מה בדיוק אתם מציעים?", ob_offering_ph: "המוצר/השירות בכמה מילים",
+      ob_customers_label: "מי הלקוחות שלך?", ob_customers_ph: "מי קונה/ישתמש בזה",
+      ob_wants_label: "מה הכי היית רוצה לשנות?", ob_wants_ph: "הדבר הראשון שהיית משפר",
+      ob_default_venture_name: "המיזם שלי",
       small_win_title: "כבר יש לנו התחלה 🚀",
       small_win_understood: "מה הבנתי עד עכשיו:",
       small_win_goal: "המטרה שאני מזהה:",
@@ -1285,6 +1411,11 @@ window.addEventListener("error", function (ev) {
       thinking: "APEX חושב...",
       dec_proceed: "קדימה", dec_wait: "לחכות", dec_test: "לבדוק קודם", dec_reject: "לדחות", dec_reconsider: "לחשוב שוב",
       dec_confidence: "ביטחון",
+      confidence_unverified: "עדיין לא נבדק בפועל, אבל הכי הגיוני לנסות עכשיו",
+      identity_verb_idea: "בונה את", identity_verb_biz: "פותר את",
+      home_greet_momentum: "השבוע כבר קידמת {n} צעדים - ממשיכים יחד.",
+      home_greet_momentum_one: "השבוע כבר קידמת צעד אחד - ממשיכים יחד.",
+      home_greet_default: "בוא נמשיך מאיפה שעצרנו.",
       dec_applied: "✓ נוסף כמשימה פעילה",
       reset_confirm_title: "להתחיל מיזם חדש?",
       reset_confirm_body: "פעולה זו תמחק לצמיתות את כל השיחה, המשימות וההתקדמות של המיזם הנוכחי. אי אפשר לשחזר את זה אחרי המחיקה.",
@@ -1303,7 +1434,7 @@ window.addEventListener("error", function (ev) {
       notif_active: "🔔 תזכורות פעילות", notif_enable: "🔕 תזכורות כבויות", notif_caption: "תזכורות בתוך האפליקציה · לחיצה מחליפה מצב",
       new_venture_label: "🔄 מיזם חדש",
       decision_help_title: "🤔 עזרה בקבלת החלטה", ask_btn: "שאל",
-      venture_screen_title: "🎯 המיזם", tasks_screen_title: "✓ משימות", apex_screen_title: "🧠 APEX", more_screen_title: "☰ עוד",
+      venture_screen_title: "🎯 המיזם", tasks_screen_title: "✓ משימות", apex_screen_title: "🧠 APEX", more_screen_title: "☰ עוד", all_tasks_btn: "לכל המשימות",
       focus_task_label: "משימת המיקוד", current_task_label: "🎯 המשימה שלך עכשיו",
       decision_label: "🧠 החלטה", get_decision_btn: "קבל החלטה עם APEX", all_decisions_btn: "כל ההחלטות ←",
       bottleneck_label: "⚠ צוואר הבקבוק", handle_it_btn: "ראה ניתוח", bn_hide_btn: "הסתר",
@@ -1393,8 +1524,8 @@ window.addEventListener("error", function (ev) {
       health_main_blocker: "הדבר המרכזי שמעכב את המיזם:", health_main_blocker_biz: "הדבר המרכזי שמעכב את העסק:",
       health_weekly_step: "הצעד המומלץ השבוע",
       health_exec_noplan: "אין עדיין תוכנית משימות", health_exec_stuck: "המשימה הפעילה תקועה 3+ ימים",
-      health_exec_idle: "לא הושלמו משימות בשבועיים האחרונים", health_exec_slow: "הקצב האט השבוע", health_exec_ok: "{n} משימות הושלמו השבוע",
-      days_left_fmt: "{n} ימים ליעד", target_today: "היום היעד!", days_overdue_fmt: "היעד עבר לפני {n} ימים",
+      health_exec_idle: "לא הושלמו משימות בשבועיים האחרונים", health_exec_slow: "הקצב האט השבוע", health_exec_ok: "{n} משימות הושלמו השבוע", health_exec_ok_one: "משימה אחת הושלמה השבוע",
+      days_left_fmt: "{n} ימים ליעד", days_left_fmt_one: "יום אחד ליעד", target_today: "היום היעד!", days_overdue_fmt: "היעד עבר לפני {n} ימים", days_overdue_fmt_one: "היעד עבר לפני יום אחד",
       kpi_financial_name: "יעד כספי", kpi_financial_why: "נגזר מהיעד הכספי שהגדרת באפיון",
       tl_exec_start: "תחילת הביצוע", estimated_label: "הערכה", tl_task_started: "התחלת משימה", tl_task_done: "הושלמה",
       tl_tasks_created_fmt: "נוצרה תוכנית עם {n} משימות", tl_task_created: "נוצרה משימה", tl_outcome: "תוצאה תועדה",
@@ -1404,14 +1535,14 @@ window.addEventListener("error", function (ev) {
       share_personal_now: "עכשיו אני עובד על:", share_personal_learned: "משהו שלמדתי:",
       share_sec_venture: "המיזם", share_sec_goal: "היעד", share_sec_kpis: "מדדים (בפועל / יעד)", share_sec_achieved: "מה הושג",
       share_sec_in_progress: "מה כרגע בביצוע", share_sec_learned: "מה למדנו", share_sec_next: "מה הדבר הבא", share_sec_progress: "התקדמות",
-      share_decisions_fmt: "{n} החלטות מתועדות",
+      share_decisions_fmt: "{n} החלטות מתועדות", share_decisions_fmt_one: "החלטה אחת מתועדת",
       export_done_toast: "✓ הקובץ ירד למכשיר", share_copied: "✓ הועתק - אפשר להדביק בכל מקום", share_copy_failed: "לא הצלחתי להעתיק אוטומטית - סמן את הטקסט והעתק ידנית.",
       lc_suggest_fmt: "💡 APEX מזהה שייתכן שעברת לשלב: {stage}", lc_suggest_accept: "✓ עדכן שלב", lc_suggest_keep: "השאר כמו שזה",
       goal_reached_title: "🏁 הגעת ליעד הנוכחי", goal_reached_body: "כל הכבוד. מיזם לא נגמר ביעד אחד - מה היעד הבא?",
       goal_reached_body_biz: "כל הכבוד. עסק לא נגמר - זה הזמן להגדיר את היעד או המחזור הבא.",
       next_goal_label: "היעד הבא", next_goal_placeholder: "למשל: להגיע ל-50 לקוחות חוזרים", next_goal_save: "🎯 קבע יעד ובנה תוכנית",
       next_goal_btn: "🎯 הגדר את היעד הבא", next_goal_prefill: "הגעתי ליעד הקודם. היעד הבא שלי: {goal}. בנה לי תוכנית משימות ממוקדת ליעד הזה.",
-      edit_aria: "ערוך", kpi_remove_aria: "הסר מדד", kpi_updated: "עודכן", kpi_actual: "בפועל", kpi_target: "יעד",
+      edit_aria: "ערוך", kpi_remove_aria: "הסר מדד", kpi_dismiss_aria: "התעלם מההצעה", kpi_updated: "עודכן", kpi_actual: "בפועל", kpi_target: "יעד",
       kpi_remove_confirm: "להסיר את המדד? ההיסטוריה שלו תימחק.", kpi_remove_yes: "הסר",
       kpi_empty: "עדיין אין מדדים. הוסף 1-3 מדדים שבאמת מראים אם המיזם מתקדם (למשל: שיחות לקוחות, נרשמים, הזמנות).",
       kpi_empty_biz: "עדיין אין מדדים. הוסף 1-3 מדדים שמראים את מצב העסק (למשל: הכנסות חודשיות, רווחיות, לקוחות חוזרים).",
@@ -1424,14 +1555,14 @@ window.addEventListener("error", function (ev) {
       dec_open: "פתוחות", dec_resolved: "נסגרו", timeline_empty: "הפעילות שלך תופיע כאן.", show_more_fmt: "הצג עוד {n}",
       progress_screen_title: "🚀 התקדמות המיזם", progress_screen_title_biz: "🚀 התקדמות העסק", share_short: "📤 שתף",
       sec_cycle: "🔄 מחזור הניהול", sec_stage: "📍 שלב המיזם",
-      vp_from_kpi: "לפי {n} מדדי KPI", vp_from_stage: "לפי השלב (הוסף KPI למדידה מדויקת)", vp_need_kpi: "הוסף KPI כדי למדוד את התקדמות העסק",
+      vp_from_kpi: "לפי {n} מדדי KPI", vp_from_kpi_one: "לפי מדד KPI אחד", vp_from_stage: "לפי השלב (הוסף KPI למדידה מדויקת)", vp_need_kpi: "הוסף KPI כדי למדוד את התקדמות העסק",
       sec_meters: "📊 ביצוע מול התקדמות", meter_execution: "התקדמות ביצוע", tasks_done_word: "משימות הושלמו",
       meter_venture: "התקדמות המיזם", meter_venture_biz: "התקדמות העסק",
       meters_explain: "ביצוע = כמה מהתוכנית עשית. התקדמות המיזם = כמה קרוב אתה לתוצאה עצמה.",
       meters_explain_biz: "ביצוע = כמה מהתוכנית עשית. התקדמות העסק = כמה קרוב אתה ליעדים במדדים.",
       nba_empty: "אין כרגע משימה פעילה.", nba_ask_btn: "✨ בקש מ-APEX את הצעד הבא", sec_nba: "🎯 הפעולה הבאה הכי חשובה",
       nba_prefill: "אין לי כרגע משימה פעילה. מה הצעד הבא הכי חשוב עכשיו? אם צריך - בנה משימות חדשות.",
-      current_goal_label: "🎯 היעד הנוכחי", next_milestone_plain: "אבן הדרך הבאה", tasks_to_next_fmt: "עוד {n} משימות",
+      current_goal_label: "🎯 היעד הנוכחי", next_milestone_plain: "אבן הדרך הבאה", tasks_to_next_fmt: "עוד {n} משימות", tasks_to_next_fmt_one: "עוד משימה אחת",
       stage_final_note: "שלב הצמיחה - מכאן מגדירים יעדים חדשים", days_since_exec: "ימים מתחילת הביצוע",
       days_overdue_lbl: "ימים אחרי היעד", days_to_target: "ימים ליעד", exec_start_label: "🚀 תחילת ביצוע", sec_goal: "🗓️ יעד ותאריכים",
       sec_health: "🩺 בריאות המיזם", sec_health_biz: "🩺 בריאות העסק", sec_kpis: "📏 מדדים (KPI)", sec_momentum: "📈 מומנטום שבועי",
@@ -1457,7 +1588,7 @@ window.addEventListener("error", function (ev) {
       share_tpl_desc_investor: "סיכום עסקי: שלב, מדדים, הישגים והצעד הבא.", share_tpl_desc_personal: "עדכון חם לחבר או למשפחה.",
       share_preview_aria: "תצוגה מקדימה של הטקסט לשיתוף", share_copy: "📋 העתק", share_native: "📤 שתף", share_whatsapp: "🟢 WhatsApp",
       share_local_note: "הטקסט נבנה במכשיר שלך, בלי AI ובלי לשלוח נתונים לשום מקום עד שתבחר לשתף.",
-      progress_all_btn: "לכל ההתקדמות ←", new_badge_aria: "יש עדכון חדש", tasks_done_fmt: "{n} משימות הושלמו", decisions_made_fmt: "{n} החלטות התקבלו",
+      progress_all_btn: "לכל ההתקדמות ←", new_badge_aria: "יש עדכון חדש", tasks_done_fmt: "{n} משימות הושלמו", tasks_done_fmt_one: "משימה אחת הושלמה", decisions_made_fmt: "{n} החלטות התקבלו", decisions_made_fmt_one: "החלטה אחת התקבלה",
       brief_yesterday: "אתמול:", brief_opportunity: "הזדמנות:", brief_today: "💡 מה חשוב היום:",
       apply_decision_fmt: "🎯 הפוך את \"{title}\" למשימה פעילה",
       export_caption: "קובץ JSON מסודר עם כל הנתונים שלך. דוח מיזם קריא ומעוצב יגיע בהמשך.",
@@ -1476,6 +1607,39 @@ window.addEventListener("error", function (ev) {
       quick_choice_prompt: "Where are you right now?",
       quick_idea: "💡 I have an idea", quick_built: "🛠️ I'm building something", quick_active: "🏪 I have an active business", quick_revenue: "💰 Already have revenue", quick_unsure: "🤷 I'm not sure",
       quick_free_text: "You can also just type to me.",
+      // ---- Phase B (v1.4.0): structured onboarding wizard ----
+      ob_step_label: "Step {cur} of {total}",
+      ob_skip_note: "You can skip this - totally fine.",
+      ob_skip_step_btn: "Skip this step", ob_next_btn: "Next →", ob_back_btn: "← Back",
+      ob_skip_all_btn: "Skip the rest and start", ob_finish_btn: "✓ Finish and build the plan",
+      ob_finish_note: "You can always add and refine details later on the Business screen.",
+      ob_generating: "APEX is building your plan...",
+      ob_gen_error: "Something went wrong building the plan. You can try again.",
+      ob_retry_btn: "Try again",
+      ob_title_dna: "A bit about you", ob_rationale_dna: "The more you share about yourself, the better APEX can fit the plan to your real skills and time.",
+      ob_founder_name_label: "Your name (optional)", ob_founder_name_ph: "What should we call you?",
+      ob_capital_label: "How much capital do you have to invest?", ob_capital_none: "Almost none", ob_capital_some: "Some", ob_capital_enough: "Enough",
+      ob_hours_label: "How many hours a week can you put in?", ob_hours_lt5: "Up to 5", ob_hours_5_10: "5-10", ob_hours_10_20: "10-20", ob_hours_20plus: "20+",
+      ob_risk_label: "How much risk are you willing to take?", ob_risk_low: "Low", ob_risk_medium: "Medium", ob_risk_high: "High",
+      ob_title_venture: "The venture / business", ob_rationale_venture: "A clear name and a real reason (your WHY) help APEX speak to you the right way later on.",
+      ob_vname_label: "What's the venture/business called?", ob_vname_ph: "e.g. Dana's Studio",
+      ob_why_label: "Why does this matter to you? (your WHY)", ob_why_ph: "The sentence that reminds you why you started",
+      ob_btype_label: "Business type", ob_btype_product: "Product", ob_btype_service: "Service", ob_btype_retail: "Retail", ob_btype_food: "Food", ob_btype_other: "Other",
+      ob_years_label: "How long has the business been active?", ob_years_lt1: "Under a year", ob_years_1_3: "1-3 years", ob_years_3_10: "3-10 years", ob_years_10plus: "10+ years",
+      ob_vkind_label: "What's the focus right now?",
+      ob_title_situation: "Current situation", ob_rationale_situation: "Knowing what's stuck helps APEX build a plan that solves the right thing first.",
+      ob_bncat_label: "What's holding you back most right now?", ob_bncat_demand: "Demand/customers", ob_bncat_pricing: "Pricing", ob_bncat_team: "Team", ob_bncat_ops: "Operations", ob_bncat_funding: "Funding", ob_bncat_other: "Other",
+      ob_bndetail_label: "Want to add more? (optional)", ob_bndetail_ph: "A few words about it...",
+      ob_title_goal: "Goal & success", ob_rationale_goal: "A clear goal and date help APEX build a plan with a real pace.",
+      ob_goal_label: "What does success look like? (current goal)", ob_goal_ph: "e.g. 10 paying customers",
+      ob_fin_label: "Financial target (optional)", ob_fin_ph: "0",
+      ob_unit_label: "Currency",
+      ob_horizon_label: "By when?", ob_horizon_1m: "1 month", ob_horizon_3m: "3 months", ob_horizon_6m: "6 months", ob_horizon_1y: "1 year",
+      ob_title_deeper: "A bit more detail (optional)", ob_rationale_deeper: "Completely optional - but every extra detail makes the plan more accurate.",
+      ob_offering_label: "What exactly do you offer?", ob_offering_ph: "The product/service in a few words",
+      ob_customers_label: "Who are your customers?", ob_customers_ph: "Who buys/uses it",
+      ob_wants_label: "What would you most like to change?", ob_wants_ph: "The first thing you'd improve",
+      ob_default_venture_name: "My venture",
       small_win_title: "We're already off to a start 🚀",
       small_win_understood: "What I understand so far:",
       small_win_goal: "The goal I'm identifying:",
@@ -1492,6 +1656,11 @@ window.addEventListener("error", function (ev) {
       thinking: "APEX is thinking...",
       dec_proceed: "Proceed", dec_wait: "Wait", dec_test: "Test first", dec_reject: "Reject", dec_reconsider: "Reconsider",
       dec_confidence: "Confidence",
+      confidence_unverified: "Not tested yet, but the most sensible thing to try now",
+      identity_verb_idea: "building", identity_verb_biz: "solving",
+      home_greet_momentum: "You've already moved {n} steps forward this week - let's keep going.",
+      home_greet_momentum_one: "You've already moved one step forward this week - let's keep going.",
+      home_greet_default: "Let's keep going from where we left off.",
       dec_applied: "✓ Added as an active task",
       reset_confirm_title: "Start a new venture?",
       reset_confirm_body: "This will permanently delete all conversation, tasks and progress of the current venture. This cannot be undone.",
@@ -1510,7 +1679,7 @@ window.addEventListener("error", function (ev) {
       notif_active: "🔔 Reminders on", notif_enable: "🔕 Reminders off", notif_caption: "In-app reminders · tap to switch",
       new_venture_label: "🔄 New venture",
       decision_help_title: "🤔 Help making a decision", ask_btn: "Ask",
-      venture_screen_title: "🎯 Venture", tasks_screen_title: "✓ Tasks", apex_screen_title: "🧠 APEX", more_screen_title: "☰ More",
+      venture_screen_title: "🎯 Venture", tasks_screen_title: "✓ Tasks", apex_screen_title: "🧠 APEX", more_screen_title: "☰ More", all_tasks_btn: "All tasks",
       focus_task_label: "Focus task", current_task_label: "🎯 Your task right now",
       decision_label: "🧠 Decision", get_decision_btn: "Get a decision with APEX", all_decisions_btn: "All decisions ←",
       bottleneck_label: "⚠ Bottleneck", handle_it_btn: "Open analysis", bn_hide_btn: "Hide",
@@ -1600,8 +1769,8 @@ window.addEventListener("error", function (ev) {
       health_main_blocker: "The main thing holding the venture back:", health_main_blocker_biz: "The main thing holding the business back:",
       health_weekly_step: "Recommended step this week",
       health_exec_noplan: "No task plan yet", health_exec_stuck: "Active task stuck for 3+ days",
-      health_exec_idle: "No tasks completed in the last 2 weeks", health_exec_slow: "Pace slowed this week", health_exec_ok: "{n} tasks completed this week",
-      days_left_fmt: "{n} days to target", target_today: "Target is today!", days_overdue_fmt: "Target passed {n} days ago",
+      health_exec_idle: "No tasks completed in the last 2 weeks", health_exec_slow: "Pace slowed this week", health_exec_ok: "{n} tasks completed this week", health_exec_ok_one: "1 task completed this week",
+      days_left_fmt: "{n} days to target", days_left_fmt_one: "1 day to target", target_today: "Target is today!", days_overdue_fmt: "Target passed {n} days ago", days_overdue_fmt_one: "Target passed 1 day ago",
       kpi_financial_name: "Financial target", kpi_financial_why: "From the financial target you set in onboarding",
       tl_exec_start: "Execution started", estimated_label: "estimated", tl_task_started: "Task started", tl_task_done: "Completed",
       tl_tasks_created_fmt: "Plan created with {n} tasks", tl_task_created: "Task created", tl_outcome: "Outcome logged",
@@ -1611,14 +1780,14 @@ window.addEventListener("error", function (ev) {
       share_personal_now: "Right now I'm working on:", share_personal_learned: "Something I learned:",
       share_sec_venture: "Venture", share_sec_goal: "Goal", share_sec_kpis: "KPIs (actual / target)", share_sec_achieved: "Achieved",
       share_sec_in_progress: "In progress", share_sec_learned: "What we learned", share_sec_next: "What's next", share_sec_progress: "Progress",
-      share_decisions_fmt: "{n} decisions logged",
+      share_decisions_fmt: "{n} decisions logged", share_decisions_fmt_one: "1 decision logged",
       export_done_toast: "✓ File downloaded", share_copied: "✓ Copied - paste it anywhere", share_copy_failed: "Couldn't copy automatically - select the text and copy it manually.",
       lc_suggest_fmt: "💡 APEX thinks you may have moved to: {stage}", lc_suggest_accept: "✓ Update stage", lc_suggest_keep: "Keep as is",
       goal_reached_title: "🏁 You reached the current goal", goal_reached_body: "Well done. A venture doesn't end at one goal - what's the next one?",
       goal_reached_body_biz: "Well done. A business never ends - time to set the next goal or cycle.",
       next_goal_label: "Next goal", next_goal_placeholder: "e.g. Reach 50 repeat customers", next_goal_save: "🎯 Set goal & build plan",
       next_goal_btn: "🎯 Set the next goal", next_goal_prefill: "I reached my previous goal. My next goal: {goal}. Build me a focused task plan for it.",
-      edit_aria: "Edit", kpi_remove_aria: "Remove KPI", kpi_updated: "Updated", kpi_actual: "Actual", kpi_target: "Target",
+      edit_aria: "Edit", kpi_remove_aria: "Remove KPI", kpi_dismiss_aria: "Dismiss suggestion", kpi_updated: "Updated", kpi_actual: "Actual", kpi_target: "Target",
       kpi_remove_confirm: "Remove this KPI? Its history will be deleted.", kpi_remove_yes: "Remove",
       kpi_empty: "No KPIs yet. Add 1-3 metrics that truly show whether the venture is moving (e.g. customer calls, sign-ups, orders).",
       kpi_empty_biz: "No KPIs yet. Add 1-3 metrics that show how the business is doing (e.g. monthly revenue, profitability, repeat customers).",
@@ -1631,14 +1800,14 @@ window.addEventListener("error", function (ev) {
       dec_open: "Open", dec_resolved: "Closed", timeline_empty: "Your activity will show up here.", show_more_fmt: "Show {n} more",
       progress_screen_title: "🚀 Venture progress", progress_screen_title_biz: "🚀 Business progress", share_short: "📤 Share",
       sec_cycle: "🔄 Management cycle", sec_stage: "📍 Venture stage",
-      vp_from_kpi: "Based on {n} KPIs", vp_from_stage: "Based on stage (add a KPI for accuracy)", vp_need_kpi: "Add a KPI to measure business progress",
+      vp_from_kpi: "Based on {n} KPIs", vp_from_kpi_one: "Based on 1 KPI", vp_from_stage: "Based on stage (add a KPI for accuracy)", vp_need_kpi: "Add a KPI to measure business progress",
       sec_meters: "📊 Execution vs progress", meter_execution: "Execution progress", tasks_done_word: "tasks done",
       meter_venture: "Venture progress", meter_venture_biz: "Business progress",
       meters_explain: "Execution = how much of the plan you've done. Venture progress = how close you are to the outcome itself.",
       meters_explain_biz: "Execution = how much of the plan you've done. Business progress = how close you are to your KPI targets.",
       nba_empty: "No active task right now.", nba_ask_btn: "✨ Ask APEX for the next step", sec_nba: "🎯 Next best action",
       nba_prefill: "I don't have an active task right now. What's the most important next step? If needed, build new tasks.",
-      current_goal_label: "🎯 Current goal", next_milestone_plain: "Next milestone", tasks_to_next_fmt: "{n} more tasks",
+      current_goal_label: "🎯 Current goal", next_milestone_plain: "Next milestone", tasks_to_next_fmt: "{n} more tasks", tasks_to_next_fmt_one: "1 more task",
       stage_final_note: "Growth stage - from here you set new goals", days_since_exec: "days since execution start",
       days_overdue_lbl: "days past target", days_to_target: "days to target", exec_start_label: "🚀 Execution start", sec_goal: "🗓️ Goal & dates",
       sec_health: "🩺 Venture health", sec_health_biz: "🩺 Business health", sec_kpis: "📏 KPIs", sec_momentum: "📈 Weekly momentum",
@@ -1664,7 +1833,7 @@ window.addEventListener("error", function (ev) {
       share_tpl_desc_investor: "A business summary: stage, KPIs, wins and next step.", share_tpl_desc_personal: "A warm update for a friend or family.",
       share_preview_aria: "Preview of the text to share", share_copy: "📋 Copy", share_native: "📤 Share", share_whatsapp: "🟢 WhatsApp",
       share_local_note: "This text is built on your device - no AI, and nothing is sent anywhere until you choose to share.",
-      progress_all_btn: "All progress →", new_badge_aria: "New update", tasks_done_fmt: "{n} tasks completed", decisions_made_fmt: "{n} decisions made",
+      progress_all_btn: "All progress →", new_badge_aria: "New update", tasks_done_fmt: "{n} tasks completed", tasks_done_fmt_one: "1 task completed", decisions_made_fmt: "{n} decisions made", decisions_made_fmt_one: "1 decision made",
       brief_yesterday: "Yesterday:", brief_opportunity: "Opportunity:", brief_today: "💡 What matters today:",
       apply_decision_fmt: "🎯 Make \"{title}\" the active task",
       export_caption: "A structured JSON file with all your data. A readable Venture Report is coming later.",
@@ -1681,6 +1850,15 @@ window.addEventListener("error", function (ev) {
   function t(key) {
     var dict = TRANSLATIONS[state.language] || TRANSLATIONS.he;
     return (key in dict) ? dict[key] : (TRANSLATIONS.he[key] !== undefined ? TRANSLATIONS.he[key] : key);
+  }
+  // Venture-health "main_blocker" sometimes comes back from the AI as a bare
+  // category slug (e.g. "validation") instead of a translated phrase. Map it
+  // through the same hc_* category dictionary used for the health rows, and
+  // fall back to the raw value untouched when it isn't a known category key.
+  function mainBlockerText(raw) {
+    if (!raw) return raw;
+    var key = "hc_" + String(raw).trim().toLowerCase();
+    return (key in TRANSLATIONS.he) ? t(key) : raw;
   }
 
   function applyDocumentDirection() {
@@ -1718,6 +1896,16 @@ window.addEventListener("error", function (ev) {
     entryStateJustChanged: false,
     entryStatePrevious: null,
     showBackConfirm: false,
+    // ---- Phase B (v1.4.0): structured onboarding wizard ----
+    // obStep: null = not in the wizard (either pre-entry-state, or an old/legacy
+    // free-chat onboarding already in progress - never force those into the
+    // wizard). A number = the 0-based wizard step (0..4). obAnswers collects
+    // every answer, keyed by field name, mapped 1:1 onto existing venture fields
+    // at finalize - never a parallel data shape.
+    obStep: null,
+    obAnswers: {},
+    obGenerating: false,
+    obGenError: null,
     messages: [{ role: "assistant", content: "היי. ספר לי על המיזם או היעד שאתה רוצה לבנות - גם אם זה עדיין רעיון גולמי. נחשוב עליו ביחד לעומק, ותסגור את האפיון כשתרגיש מוכן." }],
     sending: false,
     venture: null,
@@ -1812,6 +2000,8 @@ window.addEventListener("error", function (ev) {
       dismissals: state.dismissals,
       // v1.3.0 - optional
       kpis: state.kpis, kpiDismissed: state.kpiDismissed, progressCollapsed: state.progressCollapsed,
+      // v1.4.0 - structured onboarding wizard (Phase B); optional, only meaningful pre-venture
+      obStep: state.obStep, obAnswers: state.obAnswers,
     };
   }
 
@@ -1845,6 +2035,8 @@ window.addEventListener("error", function (ev) {
     if (Array.isArray(d.kpis)) state.kpis = d.kpis;
     if (Array.isArray(d.kpiDismissed)) state.kpiDismissed = d.kpiDismissed;
     if (d.progressCollapsed && typeof d.progressCollapsed === "object") state.progressCollapsed = d.progressCollapsed;
+    if (typeof d.obStep === "number") state.obStep = d.obStep;
+    if (d.obAnswers && typeof d.obAnswers === "object") state.obAnswers = d.obAnswers;
     normalizeState();
   }
 
@@ -1985,6 +2177,51 @@ window.addEventListener("error", function (ev) {
     state.ventureEvents = { pending: pending, last_refresh_at: ev.last_refresh_at || null };
     persist();
     fetchDailyBriefIfNeeded(); // self-gated: no call unless the interval has passed
+  }
+
+  // ---- Phase A: confidence-aware recommendations (v1.4.0) ----
+  // Shared across every "do this" recommendation card in the app (bottleneck,
+  // Decision Ledger, daily brief, venture_health weekly_step, KPI suggestions,
+  // lifecycle_suggestion, replan suggestion). No new AI calls: when the item
+  // already carries an AI confidence field we use it; otherwise we derive a
+  // cheap local signal from whether this kind of action has prior recorded
+  // evidence (an outcome or an applied decision that overlaps with it).
+  function textOverlap(a, b) {
+    var wa = normText(a).split(" ").filter(function (w) { return w.length >= 3; });
+    var wb = normText(b).split(" ").filter(function (w) { return w.length >= 3; });
+    for (var i = 0; i < wa.length; i++) if (wb.indexOf(wa[i]) !== -1) return true;
+    return false;
+  }
+  function hasPriorEvidence(title) {
+    if (!title) return false;
+    var outcomes = state.outcomes || [];
+    for (var i = 0; i < outcomes.length; i++) {
+      var o = outcomes[i];
+      var taskT = o.task_id ? ((state.tasks || []).find(function (tk) { return tk.id === o.task_id; }) || {}).title : "";
+      if (taskT && textOverlap(taskT, title)) return true;
+    }
+    var decs = state.decisions || [];
+    for (var j = 0; j < decs.length; j++) {
+      var d = decs[j];
+      if (d.applied && d.decision && d.decision.title && textOverlap(d.decision.title, title)) return true;
+    }
+    return false;
+  }
+  // item: an object that may carry a numeric (0-1) or qualitative AI confidence
+  // field, plus a "title" (or similar) string used for the local fallback.
+  function confidenceLevel(item) {
+    if (!item) return "high"; // nothing to warn about
+    if (typeof item.confidence === "number") return item.confidence >= 0.7 ? "high" : "low";
+    if (typeof item.confidence === "string") {
+      var cl = item.confidence.toLowerCase();
+      if (cl === "high") return "high";
+      if (cl === "medium" || cl === "low") return "low";
+    }
+    return hasPriorEvidence(item.title) ? "high" : "low";
+  }
+  function confidenceLineHtml(item) {
+    if (confidenceLevel(item) !== "low") return "";
+    return '<div class="confidence-note">' + esc(t("confidence_unverified")) + '</div>';
   }
 
   // ---- Outcome -> Memory (P0 #4): cheap LOCAL significance check, no AI ----
@@ -2264,8 +2501,64 @@ window.addEventListener("error", function (ev) {
     state.entryState = value;
     state.entryStateTimestamp = new Date().toISOString();
     state.entryStateJustChanged = isChange;
+    if (!isChange && !state.venture && countUserMessages() === 0) {
+      // Phase B: a brand-new user starts the short structured wizard (Step 2 of 6
+      // onward) instead of the old open-ended free-typing conversation.
+      state.obAnswers = { entry_state: value };
+      state.obStep = 0;
+      if (!state.onboarding_started_at) state.onboarding_started_at = state.entryStateTimestamp;
+      persist();
+      render();
+      return;
+    }
     persist();
     runOnboardTurn(label);
+  }
+
+  // Shared finalize step: turns a VENTURE-shaped object (title, target_date,
+  // financial_target/unit, core_why, founder_name, founder_dna, lifecycle_stage,
+  // venture_kind, mission, current_goal, business_profile) plus a raw tasks list
+  // into the live venture + tasks, and moves the app into the dashboard. Used by
+  // both the original free-chat onboarding (extracted VENTURE tag) and the
+  // structured wizard (Phase B) finalize, so both stay in lockstep.
+  function activateVenture(fields, tasksRaw) {
+    var execNow = nowIso();
+    state.onboarding_completed_at = execNow;
+    state.venture = {
+      created_at: execNow,
+      execution_started_at: execNow, // onboarding finished -> venture moves into execution
+      updated_at: execNow,
+      onboarding_started_at: state.onboarding_started_at || state.entryStateTimestamp || null,
+      onboarding_completed_at: execNow,
+      title: fields.title, target_date: fields.target_date,
+      financial_target: fields.financial_target || 0, financial_unit: fields.financial_unit || "₪",
+      core_why: fields.core_why || "", founder_name: fields.founder_name || "",
+      founder_dna: fields.founder_dna || null,
+      entry_state: state.entryState || null,
+      knowledge: [], unknowns: [], recent_changes: [],
+      // v1.3.0 lifecycle: AI-assessed stage, else from the entry state (initial context only)
+      lifecycle_stage: LIFECYCLE_STAGES.indexOf(fields.lifecycle_stage) !== -1 ? fields.lifecycle_stage : (ENTRY_TO_LIFECYCLE[state.entryState] || "idea"),
+      lifecycle_stage_inferred: false,
+      lifecycle_history: [],
+      venture_kind: VENTURE_KINDS.indexOf(fields.venture_kind) !== -1 ? fields.venture_kind : null,
+      mission: fields.mission ? String(fields.mission) : "",
+      current_goal: fields.current_goal ? { title: String(fields.current_goal), target_date: fields.target_date || null, set_at: execNow } : null,
+      business_profile: normalizeBusinessProfile(fields.business_profile),
+      cycle_count: 1,
+    };
+    state.venture.lifecycle_history = [{ stage: state.venture.lifecycle_stage, from: null, at: execNow, source: "onboarding" }];
+    state.tasks = makeTasks(tasksRaw);
+    state.replanMessages = [{ role: "assistant", content: (isBusinessStage(state.venture.lifecycle_stage)
+      ? ("התוכנית ל\"" + fields.title + "\" מוכנה - מתחילים מהשיפור החשוב ביותר עכשיו. עדכן אותי כאן על כל מה שקורה בעסק.")
+      : ("התוכנית ל\"" + fields.title + "\" מוכנה ובביצוע. עדכן אותי כאן אם משהו משתנה בדרך.")) }];
+    state.sending = false;
+    state.obStep = null;
+    state.obGenerating = false;
+    state.mapReadyPending = true;
+    state.phase = "dashboard";
+    persist();
+    render();
+    fetchDailyTipIfNeeded(); fetchWhyMessageIfNeeded(); fetchDailyBriefIfNeeded();
   }
 
   // opts.isRetry: the user message is already in state.messages (appended by the failed
@@ -2299,41 +2592,7 @@ window.addEventListener("error", function (ev) {
       }
       state.messages = state.messages.concat([{ role: "assistant", content: displayText }]);
       if (extracted && Array.isArray(extracted.tasks) && extracted.tasks.length > 0) {
-        var execNow = nowIso();
-        state.onboarding_completed_at = execNow;
-        state.venture = {
-          created_at: execNow,
-          execution_started_at: execNow, // onboarding finished -> venture moves into execution
-          updated_at: execNow,
-          onboarding_started_at: state.onboarding_started_at || state.entryStateTimestamp || null,
-          onboarding_completed_at: execNow,
-          title: extracted.title, target_date: extracted.target_date,
-          financial_target: extracted.financial_target || 0, financial_unit: extracted.financial_unit || "₪",
-          core_why: extracted.core_why || "", founder_name: extracted.founder_name || "",
-          founder_dna: extracted.founder_dna || null,
-          entry_state: state.entryState || null,
-          knowledge: [], unknowns: [], recent_changes: [],
-          // v1.3.0 lifecycle: AI-assessed stage, else from the entry state (initial context only)
-          lifecycle_stage: LIFECYCLE_STAGES.indexOf(extracted.lifecycle_stage) !== -1 ? extracted.lifecycle_stage : (ENTRY_TO_LIFECYCLE[state.entryState] || "idea"),
-          lifecycle_stage_inferred: false,
-          lifecycle_history: [],
-          venture_kind: VENTURE_KINDS.indexOf(extracted.venture_kind) !== -1 ? extracted.venture_kind : null,
-          mission: extracted.mission ? String(extracted.mission) : "",
-          current_goal: extracted.current_goal ? { title: String(extracted.current_goal), target_date: extracted.target_date || null, set_at: execNow } : null,
-          business_profile: normalizeBusinessProfile(extracted.business_profile),
-          cycle_count: 1,
-        };
-        state.venture.lifecycle_history = [{ stage: state.venture.lifecycle_stage, from: null, at: execNow, source: "onboarding" }];
-        state.tasks = makeTasks(extracted.tasks);
-        state.replanMessages = [{ role: "assistant", content: (isBusinessStage(state.venture.lifecycle_stage)
-          ? ("התוכנית ל\"" + extracted.title + "\" מוכנה - מתחילים מהשיפור החשוב ביותר עכשיו. עדכן אותי כאן על כל מה שקורה בעסק.")
-          : ("התוכנית ל\"" + extracted.title + "\" מוכנה ובביצוע. עדכן אותי כאן אם משהו משתנה בדרך.")) }];
-        state.sending = false;
-        state.mapReadyPending = true;
-        state.phase = "dashboard";
-        persist();
-        render();
-        fetchDailyTipIfNeeded(); fetchWhyMessageIfNeeded(); fetchDailyBriefIfNeeded();
+        activateVenture(extracted, extracted.tasks);
         return;
       }
     } catch (err) {
@@ -2377,6 +2636,208 @@ window.addEventListener("error", function (ev) {
       // silent fail - small win is a nice-to-have, not critical
     }
     state.smallWinLoading = false;
+  }
+
+  // ==== Phase B (v1.4.0): structured onboarding wizard ====
+  // Deterministic, client-side steps (chips + short text, visible progress,
+  // an honest skip on every step) instead of the old open-ended free-typing
+  // conversation. The only AI call left in this flow is one request for the
+  // task list itself (ask-claude, same pattern as everywhere else) - every
+  // other field is mapped straight from the user's own taps/text, so mapping
+  // onto the venture/business_profile/DNA fields is guaranteed correct instead
+  // of depending on the AI to transcribe it right.
+  var OB_TOTAL_STEPS = 5; // obStep 0..4, entry-state itself is "step 1" of the flow
+  function isBizEntry(es) { return es === "active_business" || es === "growth" || es === "improve" || es === "revenue"; }
+  function obChipRow(field, options, selected) {
+    return '<div class="ob-chip-row">' + options.map(function (o) {
+      return '<button type="button" class="ob-chip-btn' + (selected === o.value ? " selected" : "") + '" data-action="ob-set-chip" data-field="' + esc(field) + '" data-value="' + esc(o.value) + '">' + esc(o.label) + '</button>';
+    }).join("") + '</div>';
+  }
+  function obCaptureCurrentInputs() {
+    var step = state.obStep;
+    var a = state.obAnswers = state.obAnswers || {};
+    function val(id) { var el = document.getElementById(id); return el ? el.value : undefined; }
+    if (step === 0) {
+      var fn = val("obFounderName"); if (fn !== undefined) a.founder_name = fn.trim();
+    } else if (step === 1) {
+      var vn = val("obVentureName"), wy = val("obCoreWhy");
+      if (vn !== undefined) a.venture_name = vn.trim();
+      if (wy !== undefined) a.core_why = wy.trim();
+    } else if (step === 2) {
+      var bd = val("obBnDetail"); if (bd !== undefined) a.bottleneck_detail = bd.trim();
+    } else if (step === 3) {
+      var gt = val("obGoalTitle"), ft = val("obFinTarget");
+      if (gt !== undefined) a.goal_title = gt.trim();
+      if (ft !== undefined) a.financial_target = ft;
+    } else if (step === 4) {
+      var of = val("obOffering"), cu = val("obCustomers"), wc = val("obWants");
+      if (of !== undefined) a.offering = of.trim();
+      if (cu !== undefined) a.customers = cu.trim();
+      if (wc !== undefined) a.wants_to_change = wc.trim();
+    }
+  }
+  function renderObWizard() {
+    if (state.obGenerating) {
+      return '<div class="ob-wrap"><div class="ob-generating">' + esc(t("ob_generating")) + '</div></div>';
+    }
+    var a = state.obAnswers || {};
+    var step = state.obStep;
+    var biz = isBizEntry(state.entryState);
+    var titleKey, rationaleKey, body = "";
+    if (step === 0) {
+      titleKey = "ob_title_dna"; rationaleKey = "ob_rationale_dna";
+      body += '<div class="ob-field"><label for="obFounderName">' + esc(t("ob_founder_name_label")) + '</label><input type="text" id="obFounderName" placeholder="' + esc(t("ob_founder_name_ph")) + '" value="' + esc(a.founder_name || "") + '" /></div>';
+      body += '<div class="ob-field"><label>' + esc(t("ob_capital_label")) + '</label>' + obChipRow("dna_capital", [
+        { value: "none", label: t("ob_capital_none") }, { value: "some", label: t("ob_capital_some") }, { value: "enough", label: t("ob_capital_enough") }
+      ], a.dna_capital) + '</div>';
+      body += '<div class="ob-field"><label>' + esc(t("ob_hours_label")) + '</label>' + obChipRow("dna_hours", [
+        { value: "lt5", label: t("ob_hours_lt5") }, { value: "5_10", label: t("ob_hours_5_10") }, { value: "10_20", label: t("ob_hours_10_20") }, { value: "20plus", label: t("ob_hours_20plus") }
+      ], a.dna_hours) + '</div>';
+      body += '<div class="ob-field"><label>' + esc(t("ob_risk_label")) + '</label>' + obChipRow("dna_risk", [
+        { value: "low", label: t("ob_risk_low") }, { value: "medium", label: t("ob_risk_medium") }, { value: "high", label: t("ob_risk_high") }
+      ], a.dna_risk) + '</div>';
+    } else if (step === 1) {
+      titleKey = "ob_title_venture"; rationaleKey = "ob_rationale_venture";
+      body += '<div class="ob-field"><label for="obVentureName">' + esc(t("ob_vname_label")) + '</label><input type="text" id="obVentureName" placeholder="' + esc(t("ob_vname_ph")) + '" value="' + esc(a.venture_name || "") + '" /></div>';
+      body += '<div class="ob-field"><label for="obCoreWhy">' + esc(t("ob_why_label")) + '</label><textarea id="obCoreWhy" placeholder="' + esc(t("ob_why_ph")) + '">' + esc(a.core_why || "") + '</textarea></div>';
+      if (biz) {
+        body += '<div class="ob-field"><label>' + esc(t("ob_btype_label")) + '</label>' + obChipRow("business_type", [
+          { value: "product", label: t("ob_btype_product") }, { value: "service", label: t("ob_btype_service") }, { value: "retail", label: t("ob_btype_retail") }, { value: "food", label: t("ob_btype_food") }, { value: "other", label: t("ob_btype_other") }
+        ], a.business_type) + '</div>';
+        body += '<div class="ob-field"><label>' + esc(t("ob_years_label")) + '</label>' + obChipRow("years_active", [
+          { value: "lt1", label: t("ob_years_lt1") }, { value: "1_3", label: t("ob_years_1_3") }, { value: "3_10", label: t("ob_years_3_10") }, { value: "10plus", label: t("ob_years_10plus") }
+        ], a.years_active) + '</div>';
+      } else {
+        body += '<div class="ob-field"><label>' + esc(t("ob_vkind_label")) + '</label>' + obChipRow("venture_kind",
+          VENTURE_KINDS.filter(function (k) { return k !== "whole_business"; }).map(function (k) { return { value: k, label: t("vk_" + k) }; }),
+          a.venture_kind) + '</div>';
+      }
+    } else if (step === 2) {
+      titleKey = "ob_title_situation"; rationaleKey = "ob_rationale_situation";
+      body += '<div class="ob-field"><label>' + esc(t("ob_bncat_label")) + '</label>' + obChipRow("bottleneck_cat", [
+        { value: "demand", label: t("ob_bncat_demand") }, { value: "pricing", label: t("ob_bncat_pricing") }, { value: "team", label: t("ob_bncat_team") },
+        { value: "ops", label: t("ob_bncat_ops") }, { value: "funding", label: t("ob_bncat_funding") }, { value: "other", label: t("ob_bncat_other") }
+      ], a.bottleneck_cat) + '</div>';
+      body += '<div class="ob-field"><label for="obBnDetail">' + esc(t("ob_bndetail_label")) + '</label><textarea id="obBnDetail" placeholder="' + esc(t("ob_bndetail_ph")) + '">' + esc(a.bottleneck_detail || "") + '</textarea></div>';
+    } else if (step === 3) {
+      titleKey = "ob_title_goal"; rationaleKey = "ob_rationale_goal";
+      body += '<div class="ob-field"><label for="obGoalTitle">' + esc(t("ob_goal_label")) + '</label><input type="text" id="obGoalTitle" placeholder="' + esc(t("ob_goal_ph")) + '" value="' + esc(a.goal_title || "") + '" /></div>';
+      body += '<div class="ob-field"><label for="obFinTarget">' + esc(t("ob_fin_label")) + '</label><input type="number" inputmode="decimal" id="obFinTarget" placeholder="' + esc(t("ob_fin_ph")) + '" value="' + esc(a.financial_target || "") + '" /></div>';
+      body += '<div class="ob-field"><label>' + esc(t("ob_unit_label")) + '</label>' + obChipRow("financial_unit", [
+        { value: "₪", label: "₪" }, { value: "$", label: "$" }, { value: "€", label: "€" }
+      ], a.financial_unit || "₪") + '</div>';
+      body += '<div class="ob-field"><label>' + esc(t("ob_horizon_label")) + '</label>' + obChipRow("target_horizon", [
+        { value: "1m", label: t("ob_horizon_1m") }, { value: "3m", label: t("ob_horizon_3m") }, { value: "6m", label: t("ob_horizon_6m") }, { value: "1y", label: t("ob_horizon_1y") }
+      ], a.target_horizon) + '</div>';
+    } else {
+      titleKey = "ob_title_deeper"; rationaleKey = "ob_rationale_deeper";
+      body += '<div class="ob-field"><label for="obOffering">' + esc(t("ob_offering_label")) + '</label><textarea id="obOffering" placeholder="' + esc(t("ob_offering_ph")) + '">' + esc(a.offering || "") + '</textarea></div>';
+      body += '<div class="ob-field"><label for="obCustomers">' + esc(t("ob_customers_label")) + '</label><textarea id="obCustomers" placeholder="' + esc(t("ob_customers_ph")) + '">' + esc(a.customers || "") + '</textarea></div>';
+      body += '<div class="ob-field"><label for="obWants">' + esc(t("ob_wants_label")) + '</label><textarea id="obWants" placeholder="' + esc(t("ob_wants_ph")) + '">' + esc(a.wants_to_change || "") + '</textarea></div>';
+    }
+    var cur = step + 2, total = OB_TOTAL_STEPS + 1;
+    var pct = Math.round((cur / total) * 100);
+    var h = '<div class="ob-wrap">';
+    h += '<div class="ob-progress-row"><span class="ob-progress-label">' + esc(t("ob_step_label").replace("{cur}", cur).replace("{total}", total)) + '</span>' +
+      '<div class="ob-progress-track"><div class="ob-progress-fill" style="width:' + pct + '%;"></div></div></div>';
+    h += '<div class="ob-title">' + esc(t(titleKey)) + '</div>';
+    h += '<div class="ob-rationale">' + esc(t(rationaleKey)) + '</div>';
+    h += body;
+    if (state.obGenError) h += '<div class="ob-gen-error">' + esc(t("ob_gen_error")) + '</div>';
+    h += '<div class="ob-skip-note">' + esc(t("ob_skip_note")) + '</div>';
+    if (step === OB_TOTAL_STEPS - 1) {
+      h += '<div class="ob-finish-note">' + esc(t("ob_finish_note")) + '</div>';
+      h += '<div class="ob-actions">' +
+        '<button type="button" class="primary-btn" data-action="ob-finish"' + (state.sending ? " disabled" : "") + '>' + esc(t(state.obGenError ? "ob_retry_btn" : "ob_finish_btn")) + '</button>' +
+        '<button type="button" class="ghost-btn-ob" data-action="ob-back">' + esc(t("ob_back_btn")) + '</button>' +
+        '</div>';
+    } else {
+      h += '<div class="ob-actions">' +
+        '<button type="button" class="primary-btn" data-action="ob-next">' + esc(t("ob_next_btn")) + '</button>' +
+        '<button type="button" class="ghost-btn-ob" data-action="ob-back">' + esc(t("ob_back_btn")) + '</button>' +
+        '</div>';
+      h += '<div class="ob-actions"><button type="button" class="text-btn-ob" data-action="ob-skip-all"' + (state.sending ? " disabled" : "") + '>' + esc(t("ob_skip_all_btn")) + '</button></div>';
+    }
+    h += '</div>';
+    return h;
+  }
+  function computeObTargetDate(horizon) {
+    var months = { "1m": 1, "3m": 3, "6m": 6, "1y": 12 }[horizon] || 3;
+    var d = new Date();
+    d.setMonth(d.getMonth() + months);
+    return d.toISOString().slice(0, 10);
+  }
+  // Lean prompt: everything except the task list is already known (typed/tapped
+  // by the user) - this call only asks the AI for what genuinely needs its
+  // judgment (breaking the goal into an atomic, sequenced task list), reusing
+  // the exact same ask-claude pattern and atomic-step convention as onboarding.
+  function structuredOnboardingTaskPrompt(fields, bottleneckText, today) {
+    var biz = isBusinessStage(fields.lifecycle_stage);
+    return 'את/ה היועץ העסקי "APEX". יזם סיים אפיון קצר ומובנה (בטפסים/צ\'יפים, לא שיחה חופשית) על ' + (biz ? "העסק" : "המיזם") + ' שלו. תאריך היום: ' + today + '.\n' +
+      LIFECYCLE_PRINCIPLE + '\n' +
+      'שם: "' + fields.title + '". שלב מחזור חיים: ' + fields.lifecycle_stage + '. WHY: "' + (fields.core_why || "לא צוין") + '".\n' +
+      'DNA של היזם: הון=' + (fields.founder_dna.capital || "לא צוין") + ', שעות בשבוע=' + (fields.founder_dna.hours_per_week || "לא צוין") + ', סיכון=' + (fields.founder_dna.risk_tolerance || "לא צוין") + '.\n' +
+      (fields.current_goal ? ('היעד שהיזם הגדיר: "' + fields.current_goal + '" עד ' + fields.target_date + '.\n') : ('אין יעד מפורש - תגדיר יעד ראשוני הגיוני. תאריך יעד: ' + fields.target_date + '.\n')) +
+      'יעד כספי: ' + (fields.financial_target || 0) + ' ' + fields.financial_unit + '.\n' +
+      (bottleneckText ? ('הדבר שהיזם ציין שהכי מעכב אותו: "' + bottleneckText + '".\n') : '') +
+      (fields.business_profile.offering ? ('מה מציעים: ' + fields.business_profile.offering + '.\n') : '') +
+      (fields.business_profile.customers ? ('לקוחות: ' + fields.business_profile.customers + '.\n') : '') +
+      (fields.business_profile.wants_to_change ? ('מה שהיזם הכי רוצה לשנות: ' + fields.business_profile.wants_to_change + '.\n') : '') +
+      'המשימה שלך: פלוט אך ורק אובייקט JSON יחיד, בלי טקסט נוסף, בלי markdown, בפורמט הבא בדיוק:\n' +
+      '{"mission":"משפט אחד - מה אנחנו רוצים להשיג","tasks":[{"title":"...", "steps":["צעד אטומי 1 (15-30 דק\')","צעד אטומי 2","..."], "links":[{"label":"...", "url":"..."}]}]}\n' +
+      'בנה 3-6 משימות ראשונות שמתמודדות קודם כל עם מה שהכי מעכב (אם צוין), עם פירוק לצעדים אטומיים של 15-30 דקות כל אחד, בסדר ביצוע הגיוני. יש לך גישה לחיפוש אינטרנט - השתמש בו אם זה עוזר.' + aiLanguageLine();
+  }
+  async function finalizeStructuredOnboarding() {
+    if (state.sending || state.obGenerating) return;
+    var a = state.obAnswers || {};
+    var biz = isBizEntry(state.entryState);
+    var ventureName = (a.venture_name || "").trim() || t("ob_default_venture_name");
+    var coreWhy = (a.core_why || "").trim();
+    var founderName = (a.founder_name || "").trim();
+    var hoursMap = { lt5: 4, "5_10": 8, "10_20": 15, "20plus": 25 };
+    var founderDna = {
+      capital: a.dna_capital ? t("ob_capital_" + a.dna_capital) : "",
+      skills: "", experience: "",
+      hours_per_week: a.dna_hours ? (hoursMap[a.dna_hours] || null) : null,
+      risk_tolerance: a.dna_risk ? t("ob_risk_" + a.dna_risk) : "",
+      constraints: "",
+    };
+    var lifecycleStage = ENTRY_TO_LIFECYCLE[state.entryState] || "idea";
+    var ventureKind = (!biz && a.venture_kind && VENTURE_KINDS.indexOf(a.venture_kind) !== -1) ? a.venture_kind : null;
+    var bottleneckLabel = a.bottleneck_cat ? t("ob_bncat_" + a.bottleneck_cat) : "";
+    var bottleneckText = [bottleneckLabel, (a.bottleneck_detail || "").trim()].filter(Boolean).join(" - ");
+    var goalTitle = (a.goal_title || "").trim();
+    var bp = {
+      business_type: (biz && a.business_type) ? t("ob_btype_" + a.business_type) : "",
+      years_active: (biz && a.years_active) ? t("ob_years_" + a.years_active) : "",
+      bottlenecks: bottleneckText, problems: (a.bottleneck_detail || "").trim(),
+      offering: (a.offering || "").trim(), customers: (a.customers || "").trim(),
+      goals: goalTitle, wants_to_change: (a.wants_to_change || "").trim(),
+    };
+    var fields = {
+      title: ventureName, target_date: computeObTargetDate(a.target_horizon || "3m"),
+      financial_target: parseFloat(a.financial_target) || 0, financial_unit: a.financial_unit || "₪",
+      core_why: coreWhy, founder_name: founderName, founder_dna: founderDna,
+      lifecycle_stage: lifecycleStage, venture_kind: ventureKind,
+      mission: "", current_goal: goalTitle || null,
+      business_profile: bp,
+    };
+    state.obGenerating = true; state.obGenError = null; state.sending = true;
+    persist(); render();
+    try {
+      var today = new Date().toISOString().slice(0, 10);
+      var reply = await ask(structuredOnboardingTaskPrompt(fields, bottleneckText, today), true, "onboarding");
+      var parsed = parseAiJson(reply, ["tasks"]);
+      if (!parsed || !Array.isArray(parsed.tasks) || !parsed.tasks.length) throw new Error("no_tasks");
+      if (parsed.mission) fields.mission = String(parsed.mission);
+      activateVenture(fields, parsed.tasks);
+    } catch (err) {
+      state.obGenerating = false;
+      state.sending = false;
+      state.obGenError = true;
+      persist();
+      render();
+    }
   }
 
   function completeTask(taskId) {
@@ -2442,6 +2903,20 @@ window.addEventListener("error", function (ev) {
       var today = new Date().toISOString().slice(0, 10);
       var rules = replanRules(state.venture, state.tasks, state.decisions, today);
       var reply = await ask(buildPrompt(rules, state.replanMessages), true, "replan");
+      // item 10: fallback guard against the AI repeating its previous message
+      // (e.g. asking the same question again right after the user answered it).
+      // We couldn't find a state-management root cause - the user's reply is
+      // already appended to state.replanMessages before this call, and the full
+      // history is sent every turn - so this detects a near-duplicate reply and
+      // retries once with an explicit instruction not to repeat itself.
+      var lastAssistantMsg = null;
+      for (var raI = state.replanMessages.length - 1; raI >= 0; raI--) {
+        if (state.replanMessages[raI].role === "assistant" && !state.replanMessages[raI].error) { lastAssistantMsg = state.replanMessages[raI]; break; }
+      }
+      if (lastAssistantMsg && textSimilarity(stripTags(reply), stripTags(lastAssistantMsg.content)) > 0.85) {
+        var noRepeatRules = rules + '\n\nלתשומת ליבך: התגובה הקודמת שלך בשיחה הזו הייתה כמעט זהה למה שאתה עומד לענות עכשיו ("' + stripTags(lastAssistantMsg.content).slice(0, 200) + '"). היזם כבר הגיב אחריה - אל תחזור על אותה שאלה או משפט. הכר בתשובתו האחרונה במפורש והתקדם לצעד הבא.';
+        reply = await ask(buildPrompt(noRepeatRules, state.replanMessages), true, "replan");
+      }
       var extracted = extractTag(reply, "REPLAN");
       var displayText = stripTags(reply) || "עודכן.";
       if (/<REPLAN>/.test(reply) && !extracted) {
@@ -2897,6 +3372,7 @@ window.addEventListener("error", function (ev) {
     if (!ls) return "";
     return '<div class="suggest-card has-x" role="status"><div class="suggest-text">' + esc(t("lc_suggest_fmt").replace("{stage}", lifecycleLabel(ls.stage))) + '</div>' +
       (ls.reason ? ('<div class="soft-note">' + esc(ls.reason) + '</div>') : '') +
+      confidenceLineHtml({ title: ls.reason || lifecycleLabel(ls.stage) }) +
       '<div class="chip-row"><button type="button" class="chip-btn chip-primary" data-action="accept-lc-suggestion" data-stage="' + esc(ls.stage) + '">' + esc(t("lc_suggest_accept")) + '</button>' +
       '<button type="button" class="chip-btn" data-action="dismiss-lc-suggestion" data-stage="' + esc(ls.stage) + '">' + esc(t("lc_suggest_keep")) + '</button></div>' +
       closeBtnHtml("dismiss-lc-suggestion", ' data-stage="' + esc(ls.stage) + '"') + '</div>';
@@ -2917,6 +3393,9 @@ window.addEventListener("error", function (ev) {
   // Editable field row (Venture screen). key = "dna.skills" | "bp.revenue" | "v.mission" ...
   function fieldRowHtml(key, label, value, inputType) {
     var shown = (value === null || value === undefined || value === "" || value === 0) ? "—" : String(value);
+    // item 6: format displayed numeric field values with thousands separators
+    // (e.g. financial target) instead of showing raw digit strings like "100000".
+    if (inputType === "number" && shown !== "—" && !isNaN(Number(value))) shown = fmtNum(Number(value));
     if (state.editField === key) {
       var input = inputType === "textarea"
         ? '<textarea class="field-input" id="fieldEditInput" rows="3">' + esc(value || "") + '</textarea>'
@@ -2965,9 +3444,9 @@ window.addEventListener("error", function (ev) {
     list.forEach(function (k) { h += kpiRowHtml(k, false); });
     kpiCandidates().forEach(function (c) {
       h += '<div class="kpi-suggest"><div class="kpi-suggest-main"><div class="kpi-name">💡 ' + esc(c.name) + (c.target ? (' · ' + esc(t("kpi_target")) + ' ' + fmtNum(c.target) + (c.unit ? (' ' + esc(c.unit)) : '')) : '') + '</div>' +
-        (c.why ? ('<div class="meter-sub">' + esc(c.why) + '</div>') : '') + '</div>' +
+        (c.why ? ('<div class="meter-sub">' + esc(c.why) + '</div>') : '') + confidenceLineHtml({ title: c.name }) + '</div>' +
         '<button type="button" class="chip-btn chip-primary" data-action="kpi-accept" data-key="' + esc(c.key) + '">' + esc(t("kpi_accept")) + '</button>' +
-        '<button type="button" class="x-btn x-inline" data-action="kpi-dismiss" data-key="' + esc(c.key) + '" aria-label="' + esc(t("dismiss_aria")) + '">×</button></div>';
+        '<button type="button" class="x-btn x-inline x-dismiss" data-action="kpi-dismiss" data-key="' + esc(c.key) + '" aria-label="' + esc(t("kpi_dismiss_aria")) + '">×</button></div>';
     });
     if (state.kpiAddOpen) {
       h += '<div class="field-edit kpi-add"><div class="kpi-edit-grid">' +
@@ -2992,9 +3471,10 @@ window.addEventListener("error", function (ev) {
     });
     h += '</div>';
     if (!hh.hasAi) h += '<div class="empty-state">' + esc(t("health_empty")) + '</div>';
-    if (hh.main_blocker) h += '<div class="health-blocker"><b>' + esc(vt("health_main_blocker")) + '</b> ' + esc(hh.main_blocker) + '</div>';
+    if (hh.main_blocker) h += '<div class="health-blocker"><b>' + esc(vt("health_main_blocker")) + '</b> ' + esc(mainBlockerText(hh.main_blocker)) + '</div>';
     if (hh.weekly_step && hh.weekly_step.title) {
       h += '<div class="health-step"><div class="field-label">' + esc(t("health_weekly_step")) + '</div><div class="health-step-title">' + esc(hh.weekly_step.title) + '</div>';
+      h += confidenceLineHtml({ title: hh.weekly_step.title });
       if (Array.isArray(hh.weekly_step.steps) && hh.weekly_step.steps.length) h += '<div class="focus-steps">' + hh.weekly_step.steps.slice(0, 5).map(function (st) { return '<div class="task-step">◦ ' + esc(st) + '</div>'; }).join("") + '</div>';
       h += hh.applied ? ('<div class="soft-note">' + esc(t("dec_applied")) + '</div>')
         : ('<div class="chip-row"><button type="button" class="chip-btn chip-primary" data-action="health-create-task">' + esc(t("bn_create_task_btn")) + '</button></div>');
@@ -3081,19 +3561,24 @@ window.addEventListener("error", function (ev) {
       meterHtml(t("meter_execution"), ex, doneN + "/" + state.tasks.length + " " + t("tasks_done_word")) +
       meterHtml(vt("meter_venture"), vp.pct, vpSub) +
       '<div class="soft-note">' + esc(vt("meters_explain")) + '</div>');
-    // 3. Next Best Action
+    // 3. Next Best Action - only rendered when it adds something the NOW card on
+    // Home doesn't already show 1:1 (a normal active task duplicates that card
+    // exactly, so we skip it here and let stuck/no-active-task cases through,
+    // where this section surfaces extra actions that aren't available elsewhere).
     var nba = '';
     if (activeTask) {
       var ag = getTaskAging(activeTask);
-      nba += '<div class="nba-title">' + esc(activeTask.title) + '</div>' +
-        (ag.level !== "normal" ? ('<div class="aging-line' + (ag.level === "stuck" ? " aging-stuck" : "") + '">⏳ ' + esc(activeFor(taskStartIso(activeTask))) + '</div>') : '') +
-        '<div class="chip-row"><button type="button" class="chip-btn chip-primary" data-action="complete" data-id="' + esc(activeTask.id) + '">' + esc(t("done_btn")) + '</button>' +
-        '<button type="button" class="chip-btn" data-action="set-screen" data-screen="tasks">' + esc(t("open_task_btn")) + '</button>' +
-        (ag.level === "stuck" ? ('<button type="button" class="chip-btn" data-action="task-stuck" data-id="' + esc(activeTask.id) + '">' + esc(t("stuck_btn")) + '</button>') : '') + '</div>';
+      if (ag.level === "stuck") {
+        nba += '<div class="nba-title">' + esc(activeTask.title) + '</div>' +
+          '<div class="aging-line aging-stuck">⏳ ' + esc(activeFor(taskStartIso(activeTask))) + '</div>' +
+          '<div class="chip-row"><button type="button" class="chip-btn chip-primary" data-action="complete" data-id="' + esc(activeTask.id) + '">' + esc(t("done_btn")) + '</button>' +
+          '<button type="button" class="chip-btn" data-action="set-screen" data-screen="tasks">' + esc(t("open_task_btn")) + '</button>' +
+          '<button type="button" class="chip-btn" data-action="task-stuck" data-id="' + esc(activeTask.id) + '">' + esc(t("stuck_btn")) + '</button></div>';
+      }
     } else {
       nba += '<div class="empty-state">' + esc(t("nba_empty")) + '</div><div class="chip-row"><button type="button" class="chip-btn chip-primary" data-action="ask-next-step"' + (state.replanSending ? " disabled" : "") + '>' + esc(t("nba_ask_btn")) + '</button></div>';
     }
-    h += mcSection("nba", esc(t("sec_nba")), nba);
+    if (nba) h += mcSection("nba", esc(t("sec_nba")), nba);
     // 4. Current goal / next milestone / dates
     var goalB = infoRowHtml(t("current_goal_label"), esc(currentGoalTitle(v)));
     if (biz) {
@@ -3143,7 +3628,12 @@ window.addEventListener("error", function (ev) {
       ? (esc(fmtDate(v.execution_started_at)) + ' <span class="meter-sub">· ' + esc(timeAgo(v.execution_started_at)) + '</span>' + (v.execution_started_at_backfilled ? (' <span class="est-tag">' + esc(t("estimated_label")) + '</span>') : ''))
       : "—");
     ov += fieldRowHtml("v.target_date", t("target_date_label"), v.target_date, "date");
-    ov += fieldRowHtml("v.financial_target", t("financial_target_label") + (v.financial_unit ? (" (" + v.financial_unit + ")") : ""), v.financial_target, "number");
+    // item 6: financial_unit can itself already contain a parenthetical
+    // explanation (e.g. "(1,340 users at $20/month)") - nesting it inside a
+    // second set of parens after the label produced a visible "))". Render it
+    // as its own sub-text line instead of wrapping it into the label.
+    ov += fieldRowHtml("v.financial_target", t("financial_target_label"), v.financial_target, "number");
+    if (v.financial_unit) ov += '<div class="meter-sub" style="margin:-6px 0 8px 4px;">' + esc(v.financial_unit) + '</div>';
     ov += '<div class="field-row"><div class="field-main"><div class="field-label">' + esc(t("lifecycle_label")) + '</div><div class="field-val"><span class="lc-badge">' + esc(lifecycleLabel(lc)) + '</span>' +
       (v.lifecycle_stage_inferred ? (' <span class="est-tag">' + esc(t("inferred_label")) + '</span>') : '') + '</div></div>' +
       '<button type="button" class="chip-btn" data-action="toggle-lc-picker" aria-expanded="' + (state.lcPickerOpen ? "true" : "false") + '">' + esc(t("change_btn")) + '</button></div>';
@@ -3197,8 +3687,8 @@ window.addEventListener("error", function (ev) {
     { key: "comm", icon: "💬", items: [["WhatsApp Web", "🟢", "https://web.whatsapp.com/"], ["Gmail", "✉️", "https://mail.google.com/"]] },
     { key: "network", icon: "🤝", items: [["LinkedIn", "in", "https://www.linkedin.com/"]] },
     { key: "marketing", icon: "📣", items: [["Facebook", "f", "https://www.facebook.com/"], ["Instagram", "📷", "https://www.instagram.com/"]] },
-    { key: "work", icon: "🗂️", items: [["Google Drive", "📁", "https://drive.google.com/"], ["Google Docs", "📄", "https://docs.google.com/"], ["Google Sheets", "📊", "https://sheets.google.com/"]] },
-    { key: "manage", icon: "📅", items: [["Google Calendar", "🗓️", "https://calendar.google.com/"], ["Google Meet", "🎥", "https://meet.google.com/"]] },
+    { key: "work", icon: "🗂️", items: [["Google Drive", "📁", "https://drive.google.com/drive/my-drive"], ["Google Docs", "📄", "https://docs.google.com/"], ["Google Sheets", "📊", "https://sheets.google.com/"]] },
+    { key: "manage", icon: "📅", items: [["Google Calendar", "🗓️", "https://calendar.google.com/calendar/r"], ["Google Meet", "🎥", "https://meet.google.com/"]] },
     { key: "research", icon: "🔎", items: [["Google Search", "G", "https://www.google.com/"], ["Google Maps", "📍", "https://maps.google.com/"], ["YouTube", "▶", "https://www.youtube.com/"]] },
     { key: "design", icon: "🎨", items: [["Canva", "C", "https://www.canva.com/"]] },
   ];
@@ -3284,7 +3774,13 @@ window.addEventListener("error", function (ev) {
       html += '</div>';
     }
 
-    if (state.phase === "chat") {
+    if (state.phase === "chat" && state.entryState && !state.venture && typeof state.obStep === "number") {
+      // Phase B: the structured wizard takes over the whole chat phase for a
+      // brand-new user (never for an old/legacy free-chat onboarding already
+      // in progress - those keep working exactly as before, below).
+      html += '<div class="onboarding-topbar">' + backBtnHtml("ob-back") + '</div>';
+      html += renderObWizard();
+    } else if (state.phase === "chat") {
       if (!state.user && supabaseClient) {
         html += '<div class="tip-banner" style="margin:14px 16px 0;">🔑 כדי לדבר עם APEX, קודם תתחבר עם Google (הכפתור למעלה) - זה חד-פעמי ומגן על הנתונים שלך.</div>';
       }
@@ -3354,6 +3850,7 @@ window.addEventListener("error", function (ev) {
       var latestDecision = state.decisions[0];
       var bottleneck = (state.dailyBrief && state.dailyBrief.data && state.dailyBrief.data.bottleneck) || null;
       var todayStr0 = new Date().toISOString().slice(0, 10);
+      var homeDoneThisWeek = state.tasks.filter(function (tk) { return tk.status === "done" && tk.completedAt && new Date(tk.completedAt).getTime() >= (Date.now() - 7 * 24 * 60 * 60 * 1000); }).length;
 
       html += '<div class="dash">';
 
@@ -3364,6 +3861,8 @@ window.addEventListener("error", function (ev) {
       // ===== HOME (Command Center) =====
       if (state.screen === "home") {
         html += '<div><div class="venture-label">' + esc(vt("venture_name_label")) + (v.founder_name ? (' · ' + esc(v.founder_name)) : '') + '</div><div class="venture-title">' + esc(v.title) + '</div></div>';
+        html += identityStripHtml(v, bottleneck && bottleneck.title);
+        html += homeGreetingHtml(v, homeDoneThisWeek);
         if (state.pressureAlert) {
           html += '<div class="pressure-banner has-x"><span>⏰ ' + esc(state.pressureAlert) + '</span>' + closeBtnHtml("dismiss-pressure") + '</div>';
         }
@@ -3458,7 +3957,8 @@ window.addEventListener("error", function (ev) {
             var cls = (sev === "low" || sev === "medium") ? "bottleneck-watch" : "bottleneck-block";
             var titleKey = (sev === "low" || sev === "medium") ? "bottleneck_watch_title" : "bottleneck_block_title";
             html += '<div class="bottleneck-card ' + cls + '"><div class="bottleneck-label">' + esc(t(titleKey)) + '</div>' +
-              '<div style="font-size:13px;color:var(--ink);">' + esc(bottleneck.title) + '</div>';
+              '<div style="font-size:13px;color:var(--ink);">' + esc(bottleneck.title) + '</div>' +
+              confidenceLineHtml({ title: (bottleneck.recommended_action && bottleneck.recommended_action.title) || bottleneck.title });
             if (!state.bottleneckExpanded) {
               // Expand != Action: this only opens the analysis in place.
               html += '<button class="decision-apply-btn"' + (cls === "bottleneck-block" ? ' style="background:var(--red);"' : '') + ' data-action="handle-bottleneck" aria-expanded="false">' + esc(t("handle_it_btn")) + '</button>';
@@ -3485,7 +3985,17 @@ window.addEventListener("error", function (ev) {
         // ---- AREA 4: Progress (compact; one entry point to the full Progress screen) ----
         (function () {
           var remainingInStage = state.tasks.filter(function (tk) { return tk.status !== "done"; }).length;
-          var nextMilestone = activeTask ? activeTask.title : "";
+          // Next milestone = the genuine upcoming stage/task after the active one (not
+          // the active task itself - that's already shown by the NOW card above, so
+          // repeating its title here would just duplicate it with no new information).
+          var nextMilestone = "";
+          if (isBizVenture()) {
+            var nextLockedHome = state.tasks.find(function (tk) { return tk.status === "locked"; });
+            nextMilestone = nextLockedHome ? nextLockedHome.title : "";
+          } else {
+            var siHome = stageIndexFor(v), slHome = t("stages");
+            nextMilestone = (siHome < slHome.length - 1) ? slHome[siHome + 1] : t("stage_final_note");
+          }
           var weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
           var doneThisWeek = state.tasks.filter(function (tk) { return tk.status === "done" && tk.completedAt && new Date(tk.completedAt).getTime() >= weekAgo; }).length;
           var decisionsThisWeek = state.decisions.filter(function (d) { return d.id && parseInt(d.id.replace(/\D/g, ""), 10) >= weekAgo; }).length;
@@ -3497,10 +4007,10 @@ window.addEventListener("error", function (ev) {
           html += '<div class="progress-meta">' + Math.round(pct) + '% · ' + esc(t("progress_in_stage")) + '</div>';
           if (nextMilestone) {
             html += '<div class="next-milestone-row"><div><div class="nm-label">' + esc(t("next_milestone")) + '</div><div class="nm-val">' + esc(nextMilestone) + '</div></div>' +
-              '<button class="dash-action-btn" data-action="set-screen" data-screen="tasks" aria-label="' + esc(t("tasks_screen_title")) + '">' + dirArrow() + '</button></div>';
+              '<button class="dash-action-btn" data-action="set-screen" data-screen="tasks" aria-label="' + esc(t("tasks_screen_title")) + '">' + esc(t("all_tasks_btn")) + ' ' + dirArrow() + '</button></div>';
             html += '<div class="progress-meta">' + remainingInStage + ' ' + esc(t("tasks_left_in_stage")) + '</div>';
           }
-          html += '<div class="progress-meta">⏱ ' + esc(daysLeftText(daysLeft)) + ' · 💰 ' + esc(v.financial_target) + ' ' + esc(v.financial_unit) + '</div>';
+          html += '<div class="progress-meta">⏱ ' + esc(daysLeftText(daysLeft)) + ' · 💰 ' + esc(fmtNum(v.financial_target)) + ' ' + esc(v.financial_unit) + '</div>';
           if (doneThisWeek || decisionsThisWeek) {
             html += '<div class="progress-meta weekly-momentum">' + esc(t("weekly_momentum")) + ': ' + esc(fmtN("tasks_done_fmt", doneThisWeek)) + (decisionsThisWeek ? (' · ' + esc(fmtN("decisions_made_fmt", decisionsThisWeek))) : '') + '</div>';
           }
@@ -3526,7 +4036,10 @@ window.addEventListener("error", function (ev) {
               '</div>';
             if (b.yesterday && b.yesterday.summary) html += '<div class="brief-row"><b>' + esc(t("brief_yesterday")) + '</b> ' + mdLite(b.yesterday.summary) + '</div>';
             if (b.opportunity && b.opportunity.title) html += '<div class="brief-row"><b>' + esc(t("brief_opportunity")) + '</b> ' + mdLite(b.opportunity.title) + '</div>';
-            if (b.recommendation && b.recommendation.summary) html += '<div class="brief-row brief-rec"><b>' + esc(t("brief_today")) + '</b> ' + mdLite(b.recommendation.summary) + '</div>';
+            if (b.recommendation && b.recommendation.summary) {
+              html += '<div class="brief-row brief-rec"><b>' + esc(t("brief_today")) + '</b> ' + mdLite(b.recommendation.summary) + '</div>';
+              html += confidenceLineHtml({ title: b.recommendation.summary });
+            }
             html += '<button class="dash-action-btn" data-action="toggle-brief-full">' + esc(t("show_less")) + '</button>';
             html += '</div>';
           }
@@ -3631,6 +4144,7 @@ window.addEventListener("error", function (ev) {
           html += '<div style="font-size:13px;font-weight:700;color:var(--ink);">' + esc(d.decision && d.decision.title) + '</div>';
           if (rec.summary) html += '<div class="decision-reason"><b>' + mdLite(rec.summary) + '</b></div>';
           if (rec.reason) html += '<div class="decision-reason">' + mdLite(rec.reason) + '</div>';
+          html += confidenceLineHtml({ confidence: d.confidence, title: (d.decision && d.decision.title) || "" });
           if (d.parseFailed) {
             html += retryBtnHtml("retry-decision", ' data-id="' + esc(d.id) + '"', state.decisionLoading);
           }
@@ -3794,6 +4308,36 @@ window.addEventListener("error", function (ev) {
       render();
     } else if (action === "quick-choice") {
       chooseEntryState(btn.dataset.value, btn.dataset.text);
+    } else if (action === "ob-set-chip") {
+      obCaptureCurrentInputs();
+      state.obAnswers = state.obAnswers || {};
+      state.obAnswers[btn.dataset.field] = btn.dataset.value;
+      persist();
+      render();
+    } else if (action === "ob-next") {
+      obCaptureCurrentInputs();
+      state.obStep = Math.min(OB_TOTAL_STEPS - 1, (state.obStep || 0) + 1);
+      persist();
+      render();
+    } else if (action === "ob-back") {
+      obCaptureCurrentInputs();
+      if (!state.obStep) {
+        // Back from the first wizard step returns to the entry-state pick,
+        // exactly like the old "back to entry state" behavior.
+        state.entryStatePrevious = state.entryState;
+        state.entryState = null;
+        state.obStep = null;
+      } else {
+        state.obStep = state.obStep - 1;
+      }
+      persist();
+      render();
+    } else if (action === "ob-skip-all") {
+      obCaptureCurrentInputs();
+      finalizeStructuredOnboarding();
+    } else if (action === "ob-finish") {
+      obCaptureCurrentInputs();
+      finalizeStructuredOnboarding();
     } else if (action === "dismiss-small-win") {
       state.smallWinDismissed = true;
       render();

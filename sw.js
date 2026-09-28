@@ -4,7 +4,7 @@
 // its BYTES change, a version bump is what makes an update detectable at all -
 // this was the root cause of users being stuck on old JS (previously the cache
 // name never changed, so a new install/activate cycle never fired).
-const APP_VERSION = "1.3.0";
+const APP_VERSION = "1.4.0";
 const CACHE_NAME = "apexos-cache-" + APP_VERSION;
 const CORE_ASSETS = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
