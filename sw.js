@@ -4,7 +4,7 @@
 // its BYTES change, a version bump is what makes an update detectable at all -
 // this was the root cause of users being stuck on old JS (previously the cache
 // name never changed, so a new install/activate cycle never fired).
-const APP_VERSION = "1.1.0";
+const APP_VERSION = "1.3.0";
 const CACHE_NAME = "apexos-cache-" + APP_VERSION;
 const CORE_ASSETS = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
@@ -29,6 +29,12 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
+  }
+  // Lets the page ask a *waiting* worker which version it carries, so the
+  // "update available" banner can be dismissed per version (hidden until the
+  // next version ships) instead of reappearing on every open.
+  if (event.data && event.data.type === "GET_VERSION" && event.ports && event.ports[0]) {
+    event.ports[0].postMessage({ version: APP_VERSION });
   }
 });
 
